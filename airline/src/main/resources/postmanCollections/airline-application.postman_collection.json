@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "c08bf544-f82a-4f56-8bc0-8b5dc9c6cefa",
+		"name": "airline-application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21512793"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/airlines/create_airline",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"airlineName\":\"IndiGo\",\r\n    \"flightName\":\"BLR_601\",\r\n    \"flightTime\":\"2022-06-20T10:10:30\",\r\n    \"createdDate\":\"2009-11-03\",\r\n    \"updatedDate\":\"2010-06-20\",\r\n    \"isActive\":\"True\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/airlines/create_airline",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airlines",
+						"create_airline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/airlines/fetch_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/airlines/fetch_details",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airlines",
+						"fetch_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/airlines/update_status/1",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\r\n\t\t\"updateFieldName\":\"flightName\",\r\n\t\t\"status\":1,\r\n\t\t\"timings\":\"2022-08-29T10:10:30\",\r\n\t\t\"flightName\":\"COK_123\"\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/airlines/update-airline/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airlines",
+						"update-airline",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
