@@ -1,6 +1,7 @@
 package com.domain.airline.controllers;
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.domain.airline.dto.UpdateAirLineRequestDto;
 import com.domain.airline.entities.AirlineEntity;
 import com.domain.airline.service.AirlineService;
 
@@ -45,14 +47,21 @@ public class AirlineController {
 	 * AirlineEntity airline) { airlineService.updateAirline(airline); }
 	 */
 
-	@PatchMapping("/update_status/{id}")
-	public void updateStatus(@RequestBody AirlineEntity airline, @PathVariable Long id) {
-		airlineService.updateStatus(airline, id);
-	}
-	 
-	  @PatchMapping("/update-timings/{id}") public void
-	  updateFightTimings(@RequestBody AirlineEntity airline,@PathVariable Long id)
-	  { airlineService.updateTimings(airline,id); }
+	/*
+	 * @PatchMapping("/update_status/{id}") public void updateStatus(@RequestBody
+	 * AirlineEntity airline, @PathVariable Long id) {
+	 * airlineService.updateStatus(airline, id); }
+	 * 
+	 * @PatchMapping("/update-timings/{id}") public void
+	 * updateFightTimings(@RequestBody AirlineEntity airline,@PathVariable Long id)
+	 * { airlineService.updateTimings(airline,id); }
+	 */
+	  
+	  @PatchMapping("/update-airline/{id}")
+	  public void updateAirLines(@RequestBody UpdateAirLineRequestDto updateAirLineReqDto, @PathVariable Long id) {
+		  airlineService.updateAirLines(updateAirLineReqDto,id);
+		  
+	  }
 	  
 	 
 }

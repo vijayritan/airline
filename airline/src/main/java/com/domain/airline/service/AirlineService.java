@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.domain.airline.dto.UpdateAirLineRequestDto;
 import com.domain.airline.entities.AirlineEntity;
 import com.domain.airline.repositories.AirlineRepository;
 
@@ -44,21 +45,27 @@ public class AirlineService {
 	  
 	  }
 	  
-     //updating flight status
-	public void updateStatus(AirlineEntity airline, Long id) {
-		AirlineEntity status = airlineRepo.findById(id).get();
-		status.setIsActive(airline.getIsActive());
-		airlineRepo.save(status);
-		
+
+	public void updateAirLines(UpdateAirLineRequestDto updateAirLineReqDto,Long id) {
+		AirlineEntity airlineEntity  = convertDtoToEntity(updateAirLineReqDto,id);
+		airlineRepo.save(airlineEntity);
 	}
 
-	
-	  //updating fight timings
-	public void updateTimings(AirlineEntity airline,
-	  Long id) { AirlineEntity timings = airlineRepo.findById(id).get();
-	  timings.setFlightTime(airline.getFlightTime()); airlineRepo.save(timings);
-	  
-	  }
+	private AirlineEntity convertDtoToEntity(UpdateAirLineRequestDto updateAirLineReqDto,Long id) {
+		AirlineEntity entity = airlineRepo.findById(id).get();
+		switch(updateAirLineReqDto.getUpdateFieldName()) {
+		case "status":
+			entity.setIsActive(updateAirLineReqDto.isStatus());
+			break;
+		case "timings":
+			entity.setFlightTime(updateAirLineReqDto.getTimings());
+			break;
+		case "flightName":
+			entity.setFlightName(updateAirLineReqDto.getFlightName());
+			break;
+		}
+        return entity;
+	}
 	 
 
 	
